@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 )
 
 // ex4-1. Shadowing variables
@@ -35,12 +34,56 @@ import (
 } */
 
 //ex4-6 Scoping a variable to an if statement
-func main() {
+/* func main() {
 	if n := rand.Intn(10); n == 0 {
 		fmt.Println("That's too low")
 	} else if n > 5 {
 		fmt.Println("That's too big:", n)
 	} else {
 		fmt.Println("That's a good number:", n)
+	}
+} */
+
+// ex4-8 for statement
+func main() {
+	fmt.Println("=== complate for statement ===")
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+	}
+
+	fmt.Println("=== condition-only for statement ===")
+	i := 1
+	for i < 100 {
+		fmt.Println(i)
+		i = i * 2
+	}
+
+	fmt.Println("=== Infinite looping nostalgia for statement ===")
+	count := 1
+	for {
+		fmt.Println("Hello")
+		if count > 10 {
+			break
+		}
+		count++
+	}
+
+	fmt.Println("=== The for-range loop for statement ===")
+	evenVals := []int{2, 4, 6, 8, 10, 12}
+	for i, v := range evenVals {
+		fmt.Println(i, v)
+	}
+
+	for _, v := range evenVals {
+		fmt.Println(v)
+	}
+
+	uniqueNames := map[string]bool{
+		"Fred":  true,
+		"Raul":  true,
+		"Wilma": true,
+	}
+	for k := range uniqueNames {
+		fmt.Println(k)
 	}
 }
