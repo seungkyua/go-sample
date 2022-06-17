@@ -272,7 +272,7 @@ func main() {
 }
 */
 
-// struct can asign and compare only anonymous struct
+/* // struct can asign and compare only anonymous struct
 func main() {
 	type firstPerson struct {
 		name string
@@ -289,4 +289,51 @@ func main() {
 
 	g = f
 	fmt.Println(f == g)
+} */
+
+// slice, map, struct nil 비교
+func main() {
+	// slice 는 선언만 하면 nil 이고, nil slice 에는 값을 추가 가능
+	var x []int                 // slice 는 선언만 하면 nil
+	fmt.Println(x == nil)       // true
+	fmt.Println(len(x), cap(x)) // len 0, cap 0
+	// fmt.Println(x[0])        // panic:  nil slice 에 없는 값은 가져올 수 없음
+	x = append(x, 10) // 값 추가 가능
+	fmt.Println(x)
+
+	y := []int{}
+	fmt.Println(y == nil) // false
+
+	fmt.Println("======== slice test end========")
+
+	// map 은 선언만 하면 nil 이고, nil map 에는 key=value 추가 불가능
+	var totalWins map[string]int
+	fmt.Println(totalWins == nil) // true
+	fmt.Println(len(totalWins))   // len 0
+	// totalWins["Orcas"] = 1     // panic:  nil map 에는 key=value 추가 불가능
+	fmt.Println(totalWins["my"]) // nil 이지만 없는 값을 가져오면 zero value 리턴
+
+	winMap := map[string]int{}
+	fmt.Println(winMap == nil) // false
+	fmt.Println(len(winMap))   // 0
+	winMap["Orcas"] = 1
+	fmt.Println(winMap["Orcas"])
+
+	fmt.Println("======== map test end========")
+
+	// struct 는 선언만 하면 zero 값임, nil 비교 불가
+	type person struct {
+		name string
+		age  int
+	}
+
+	var fred person
+	// fmt.Println(fred == nil) // nill 비교 불가
+	// fmt.Println(len(fred))   // len() 사용 불가
+	fmt.Println(fred) // 0
+
+	elice := person{}
+	fmt.Println(elice) // 0
+
+	fmt.Println(elice == fred) // true: type 이 같으면 == 로 비교 가능
 }
