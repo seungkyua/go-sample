@@ -328,9 +328,16 @@ func main() {
 	}
 
 	var fred person
-	// fmt.Println(fred == nil) // nill 비교 불가
+	// fmt.Println(fred == nil) // nil 비교 불가
 	// fmt.Println(len(fred))   // len() 사용 불가
+	fmt.Println("fred' name: ", fred.name)
+	fmt.Println("Is fred' name empty string ?: ", fred.name == "")
+	fmt.Println("fred' age: ", fred.age)
 	fmt.Println(fred) // 0
+
+	// nil 비교는 slice, map, pointer 만 가능함
+	var patric *person
+	fmt.Println("pointer of patric is nill", patric == nil)
 
 	elice := person{}
 	fmt.Println(elice) // 0
